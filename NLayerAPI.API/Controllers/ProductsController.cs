@@ -44,6 +44,8 @@ namespace NLayerAPI.API.Controllers
 
         }
 
+
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -83,14 +85,7 @@ namespace NLayerAPI.API.Controllers
         {
 
             var product = await _service.GetByIdAsync(id);
-
-
-            //if(product == null)
-            //{
-            //    return CreateActionResult(CustomResponseDTO<NoContentDTO>.Fail(404,"Böyle bir ürün bulunamadı!"));
-
-            //}
-
+       
             await _service.RemoveAsync(product);
 
             return CreateActionResult(CustomResponseDTO<NoContentDTO>.Success(204));

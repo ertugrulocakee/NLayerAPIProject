@@ -38,6 +38,8 @@ builder.Services.AddScoped(typeof(IProductRepository), typeof(ProductRepository)
 builder.Services.AddScoped(typeof(IProductService),typeof(ProductService));  // ProductService tanýmlandý.
 builder.Services.AddScoped(typeof(ICategoryService),typeof(CategoryService));    // CategoryService tanýmlandý.
 builder.Services.AddScoped(typeof(ICategoryRepository),typeof(CategoryRepository));  // CategoryRepository tanýmlandý.
+builder.Services.AddScoped(typeof(NotFoundFilter<>)); // NotFound filter tanýmlandý..
+
 
 // Baðlantý ayarlarý
 
