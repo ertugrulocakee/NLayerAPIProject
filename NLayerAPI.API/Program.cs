@@ -14,6 +14,9 @@ using NLayerAPI.Service.Validations;
 using NLayerAPI.API.Filters;
 using Microsoft.AspNetCore.Mvc;
 using NLayerAPI.API.Middlewares;
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
+using NLayerAPI.API.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,14 +33,14 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); // UnitOfWorks tanýmlandý.
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); // GenericRepository tanýmlandý.
-builder.Services.AddScoped(typeof(IService<>), typeof(Service<>)); // Service
+//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); // UnitOfWorks tanýmlandý.
+//builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); // GenericRepository tanýmlandý.
+//builder.Services.AddScoped(typeof(IService<>), typeof(Service<>)); // Service
 builder.Services.AddAutoMapper(typeof(MapProfile)); // Mapping
-builder.Services.AddScoped(typeof(IProductRepository), typeof(ProductRepository)); // ProductRepository tanýmlandý.
-builder.Services.AddScoped(typeof(IProductService),typeof(ProductService));  // ProductService tanýmlandý.
-builder.Services.AddScoped(typeof(ICategoryService),typeof(CategoryService));    // CategoryService tanýmlandý.
-builder.Services.AddScoped(typeof(ICategoryRepository),typeof(CategoryRepository));  // CategoryRepository tanýmlandý.
+//builder.Services.AddScoped(typeof(IProductRepository), typeof(ProductRepository)); // ProductRepository tanýmlandý.
+//builder.Services.AddScoped(typeof(IProductService),typeof(ProductService));  // ProductService tanýmlandý.
+//builder.Services.AddScoped(typeof(ICategoryService),typeof(CategoryService));    // CategoryService tanýmlandý.
+//builder.Services.AddScoped(typeof(ICategoryRepository),typeof(CategoryRepository));  // CategoryRepository tanýmlandý.
 builder.Services.AddScoped(typeof(NotFoundFilter<>)); // NotFound filter tanýmlandý..
 
 
@@ -51,6 +54,9 @@ builder.Services.AddDbContext<AppDBContext>(x =>
    });   
 });
 
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()); // Autofac tanýmlandý.
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModule()));
 
 
 var app = builder.Build();
