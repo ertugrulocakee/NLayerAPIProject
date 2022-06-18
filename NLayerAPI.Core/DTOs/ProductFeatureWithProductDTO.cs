@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace NLayerAPI.Core.DTOs
 {
-    public class CategoryWithProductsDTO : CategoryDTO
+    public class ProductFeatureWithProductDTO : ProductFeatureDTO       
     {
- 
-        public List<ProductDTO> Products { get; set; }    
-
+        public ProductDTO Product { get; set; }
     }
 }
