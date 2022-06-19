@@ -33,6 +33,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMemoryCache(); // Cache tanýmlandý...
+
 //builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); // UnitOfWorks tanýmlandý.
 //builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); // GenericRepository tanýmlandý.
 //builder.Services.AddScoped(typeof(IService<>), typeof(Service<>)); // Service

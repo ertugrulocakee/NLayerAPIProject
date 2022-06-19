@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NLayerAPI.Service\NLayerAPI.Service.csproj" />
+    <ProjectReference Include="..\NLayerAPI.API\NLayerAPI.API.csproj" />
   </ItemGroup>
 
 </Project>
