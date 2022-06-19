@@ -23,6 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers(options => { options.Filters.Add(new ValidateFilterAttribute());}).AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductDTOValidator>()); // Kendi validation dönüþ modelimizi tanýmladýk.
+
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 
  options.SuppressModelStateInvalidFilter = true   // apinin kendi modelini inaktif ettik! 

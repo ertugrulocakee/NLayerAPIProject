@@ -138,5 +138,15 @@ namespace NLayerAPI.Caching
 
         }
 
+        public Task<CustomResponseDTO<ProductWithCategoryDTO>> GetProductWithCategory(int ProductID)
+        {
+
+            var product = _memoryCache.Get<IEnumerable<Product>>(CacheProductKey).FirstOrDefault(x => x.Id == ProductID);
+
+            var productWithCategoryDTO = _mapper.Map<ProductWithCategoryDTO>(product);
+
+            return Task.FromResult(CustomResponseDTO<ProductWithCategoryDTO>.Success(200, productWithCategoryDTO));
+
+        }
     }
 }

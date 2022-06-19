@@ -12,6 +12,8 @@ namespace NLayerAPI.Core.Services
     {
 
         Task<CustomResponseDTO<List<ProductWithCategoryDTO>>> GetProductsWithCategories();
-         
+
+        Task<CustomResponseDTO<ProductWithCategoryDTO>> GetProductWithCategory(int ProductID);
+
     }
 }

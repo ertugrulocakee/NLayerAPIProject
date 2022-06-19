@@ -10,5 +10,7 @@ namespace NLayerAPI.Core.Repository
     public interface IProductRepository : IGenericRepository<Product>
     {
         Task<List<Product>> GetProductsWithCategory(); 
+
+        Task<Product> GetProductWithCategory(int ProductID);   
     }
 }

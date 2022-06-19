@@ -31,6 +31,15 @@ namespace NLayerAPI.API.Controllers
 
         }
 
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
+        [HttpGet("[action]/{productId}")]
+        public async Task<IActionResult> GetProductWithCategory(int productId)
+        {
+
+            return CreateActionResult(await _service.GetProductWithCategory(productId));
+
+        }
+
 
         [HttpGet]   
         public async Task<IActionResult> All()
@@ -64,9 +73,9 @@ namespace NLayerAPI.API.Controllers
 
             var product = await _service.AddAsync(_mapper.Map<Product>(productDTO));
 
-            var productsDto = _mapper.Map<List<ProductDTO>>(product);
+            var productDto = _mapper.Map<ProductDTO>(product);
 
-            return CreateActionResult(CustomResponseDTO<List<ProductDTO>>.Success(201, productsDto));
+            return CreateActionResult(CustomResponseDTO<ProductDTO>.Success(201, productDto));
 
         }
 

@@ -12,5 +12,7 @@ namespace NLayerAPI.Core.Repository
 
         Task<Category> GetCategoriesWithProductsAsync(int CategoryID);
 
+        Task<List<Category>> GetAllCategoriesWithProductsAsync();   
+
     }
 }

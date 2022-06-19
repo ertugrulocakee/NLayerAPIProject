@@ -21,5 +21,10 @@ namespace NLayerAPI.Repository.Repository
         {
             return await _context.Products.Include(x => x.Category).ToListAsync();
         }
+
+        public async Task<Product> GetProductWithCategory(int ProductID)
+        {
+            return await _context.Products.Include(x => x.Category).Where(x => x.Id == ProductID).SingleOrDefaultAsync();
+        }
     }
 }

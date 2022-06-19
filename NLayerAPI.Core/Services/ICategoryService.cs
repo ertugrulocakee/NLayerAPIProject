@@ -13,5 +13,7 @@ namespace NLayerAPI.Core.Services
 
         Task<CustomResponseDTO<CategoryWithProductsDTO>> GetCategoryWithProductsAsync(int CategoryID);
 
+        Task<CustomResponseDTO<List<CategoryWithProductsDTO>>> GetCategoriesWithProductsAsync();
+
     }
 }
