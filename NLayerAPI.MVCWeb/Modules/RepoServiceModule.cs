@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Module = Autofac.Module;
 using NLayerAPI.Core.Repository;
 using NLayerAPI.Core.Services;
 using NLayerAPI.Core.UnitOfWorks;
@@ -11,7 +12,7 @@ using System.Reflection;
 
 namespace NLayerAPI.MVCWeb.Modules
 {
-    public class RepoServiceModule : Autofac.Module
+    public class RepoServiceModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -23,18 +24,16 @@ namespace NLayerAPI.MVCWeb.Modules
 
 
 
-            var apiAssembly = Assembly.GetExecutingAssembly();
+            var mvcAssembly = Assembly.GetExecutingAssembly();
             var repoAssembly = Assembly.GetAssembly(typeof(AppDBContext));
             var serviceAssembly = Assembly.GetAssembly(typeof(MapProfile));
 
-            builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly).Where(x => x.Name.EndsWith("Repository")).AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterAssemblyTypes(mvcAssembly, repoAssembly, serviceAssembly).Where(x => x.Name.EndsWith("Repository")).AsImplementedInterfaces().InstancePerLifetimeScope();
 
 
-            builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly).Where(x => x.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterAssemblyTypes(mvcAssembly, repoAssembly, serviceAssembly).Where(x => x.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerLifetimeScope();
 
-
-
-
+                       
         }
 
     }

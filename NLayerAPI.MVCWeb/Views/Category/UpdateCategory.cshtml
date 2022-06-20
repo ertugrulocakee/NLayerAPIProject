@@ -1,0 +1,40 @@
+﻿@model NLayerAPI.Core.DTOs.CategoryDTO
+
+@{
+    ViewData["Title"] = "UpdateCategory";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+
+<div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Kategori Güncelle</h4>
+
+
+                    <form asp-action="UpdateCategory" method="post" asp-controller="Category">
+
+              <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+   
+            <div class="form-group">
+
+                <input type="submit" value="Update" class="btn-primary" />
+
+            </div>
+        </form>
+
+
+
+
+
+                    </div>
+                </div>
+              </div>
+
+

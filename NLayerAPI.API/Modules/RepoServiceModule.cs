@@ -25,7 +25,7 @@ namespace NLayerAPI.API.Modules
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
 
 
-            var apiAssembly = Assembly.GetExecutingAssembly();  
+            var apiAssembly = Assembly.GetExecutingAssembly();
 
             var repoAssembly = Assembly.GetAssembly(typeof(AppDBContext));
 
