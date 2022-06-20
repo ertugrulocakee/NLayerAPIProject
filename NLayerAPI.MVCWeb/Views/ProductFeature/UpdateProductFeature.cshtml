@@ -1,0 +1,60 @@
+﻿@model NLayerAPI.Core.DTOs.ProductFeatureDTO
+
+@{
+    ViewData["Title"] = "UpdateProductFeature";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Ürün Detayı Güncelle</h4>
+
+
+                    <form asp-action="UpdateProductFeature" method="post" asp-controller="ProductFeature">
+
+              <input type="hidden" asp-for="Id" />           
+
+            <div class="form-group">
+                <label asp-for="Color"></label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+
+
+              <div class="form-group">
+                <label asp-for="Width"></label>
+                <input asp-for="Width" class="form-control" />
+                <span asp-validation-for="Width" class="text-danger"></span>
+            </div>
+
+               <div class="form-group">
+                <label asp-for="Height"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+
+         
+               <div class="form-group">
+                <label asp-for="ProductId"></label>
+                <select asp-for="ProductId" asp-items="ViewBag.products" class="form-control" ></select>
+               
+            </div>
+
+            <div class="form-group">
+
+                <input type="submit" value="Update" class="btn-primary" />
+
+            </div>
+        </form>
+
+
+
+
+
+                    </div>
+                </div>
+              </div>
+
+
+

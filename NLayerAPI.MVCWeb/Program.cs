@@ -38,6 +38,12 @@ builder.Services.AddHttpClient<CategoryAPIService>(opt =>
 
 });
 
+builder.Services.AddHttpClient<ProductFeatureAPIService>(opt =>
+{
+
+    opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
+
+});
 
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
 
