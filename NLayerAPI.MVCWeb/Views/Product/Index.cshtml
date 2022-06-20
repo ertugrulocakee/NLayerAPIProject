@@ -1,0 +1,49 @@
+﻿@using NLayerAPI.Core.DTOs
+@model List<ProductWithCategoryDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Ürünler</h4>
+                   
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Ürün Adı</th>
+                          <th>Ürün Stok Adeti</th>
+                          <th>Ürün Fiyat</th>
+                          <th>Ürün Kategori</th>
+                          <th>İşlemler</th>
+           
+                        </tr>
+                      </thead>
+                      <tbody>
+                       @foreach (var item in Model)
+                      {
+                                               
+                        <tr>
+                          <td>@item.Id</td>
+                          <td>@item.Name</td>
+                          <td>@item.Stock</td>
+                          <td>@item.Price</td>
+                          <td>@item.Category.Name</td>
+                          <td><a href="/Product/Remove/@item.Id" class="btn btn-danger">Sil</a>
+                              <a href="/Product/Update/@item.Id" class="btn btn-success">Düzenle</a>                            
+                        </tr>
+               
+                      }
+                      </tbody>
+                    </table>
+                    <br/>
+                 <a href="/Product/Save/" class="btn btn-primary">Yeni Ürün Ekle</a>
+                  </div>
+                </div>
+              </div>
+
+
